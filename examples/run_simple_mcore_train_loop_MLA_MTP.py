@@ -11,7 +11,7 @@ from megatron.core.pipeline_parallel.schedules import get_forward_backward_func
 from megatron.core.tensor_parallel.random import model_parallel_cuda_manual_seed
 from megatron.core.transformer.transformer_config import TransformerConfig,MLATransformerConfig
 from megatron.core.models.gpt.gpt_model import GPTModel
-from megatron.core.models.gpt.gpt_layer_specs import get_gpt_layer_local_spec
+from megatron.core.models.gpt.gpt_layer_specs import get_gpt_layer_local_spec,get_gpt_layer_with_transformer_engine_spec
 from megatron.core.datasets.utils import compile_helpers 
 from megatron.core.datasets.blended_megatron_dataset_builder import BlendedMegatronDatasetBuilder
 from megatron.core.datasets.gpt_dataset import GPTDatasetConfig, MockGPTDataset
@@ -47,7 +47,7 @@ def model_provider():
 
     gpt_model = GPTModel(
         config=MLAtransformer_config, 
-        transformer_layer_spec=get_gpt_layer_local_spec(multi_latent_attention=True), 
+        transformer_layer_spec=get_gpt_layer_with_transformer_engine_spec(multi_latent_attention=True), 
         vocab_size=100, 
         max_sequence_length=_SEQUENCE_LENGTH,
     )
