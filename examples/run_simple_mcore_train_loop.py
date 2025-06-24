@@ -101,7 +101,7 @@ def forward_step_func(data_iterator, model):
     loss_mask = data['loss_mask'].to(device)
     print("tokens shape dtpe",tokens.shape,tokens.dtype)
     print("attention_mask shape dtpe",attention_mask.shape,attention_mask.dtype)
-    print("position_ids shape dtpe",position_ids.shape,attention_mask.dtype)
+    print("position_ids shape dtpe",position_ids.shape,position_ids.dtype)
 
 
     output_tensor = model(tokens, position_ids, attention_mask,
