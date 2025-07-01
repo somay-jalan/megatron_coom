@@ -254,6 +254,7 @@ def check_files_exist(in_ss_out_names, key, num_partitions):
 
 
 def main():
+    multiprocessing.set_start_method("spawn", force=True)
     args = get_args()
 
     if args.split_sentences:
